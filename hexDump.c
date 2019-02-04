@@ -1,5 +1,6 @@
 /*
  * Andre Augusto Giannotti Scota - 27/10/2005
+ * (andre.scota@gmail.com)
  *
  * Um simples e escroto dumper para arquivos. Pois foi mais rapido fazer esse programa
  * do que descobrir a sintax do xd/od para fazer a mesma coisa.
