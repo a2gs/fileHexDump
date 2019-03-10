@@ -17,12 +17,12 @@
 void usage(char * );
 int dump(void * , size_t , char * , size_t );
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int fdIn;
-	char lineReaded[255], lineDumped[512];
-	unsigned long offset, offsetStep;
-	ssize_t sizeReaded;
+	int fdIn = 0;
+	char lineReaded[255] = {0}, lineDumped[512] = {0};
+	unsigned long offset = 0L, offsetStep = 0L;
+	ssize_t sizeReaded = 0;
 
 	if(argc != 3){
 		usage(argv[0]);
@@ -66,10 +66,10 @@ void usage(char *exec)
 
 int dump(void *data, size_t lenData, char *outDump, size_t lenOutDump)
 {
-	unsigned int c, maxBuf, totalTabs;
-	unsigned char buffer[16];
-	char *dataWalker;
-	size_t dataRest;
+	unsigned int c = 0, maxBuf = 0, totalTabs = 0;
+	unsigned char buffer[16] = {0};
+	char *dataWalker = NULL;
+	size_t dataRest = 0;
 
 	dataWalker = (char *)data;
 
