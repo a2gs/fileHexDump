@@ -15,7 +15,40 @@
 #include <errno.h>
 
 void usage(char * );
-int dump(void * , size_t , char * , size_t );
+
+int dump(void *data, size_t lenData, char *outDump, size_t lenOutDump)
+{
+	unsigned int c = 0, maxBuf = 0, totalTabs = 0;
+	unsigned char buffer[16] = {0};
+	char *dataWalker = NULL;
+	size_t dataRest = 0;
+
+	dataWalker = (char *)data;
+
+	for(; lenData > (size_t)0;){
+
+		if(lenData > (size_t)16) maxBuf = 16;
+		else                     maxBuf = lenData;
+
+		memcpy(buffer, dataWalker, maxBuf);
+
+		for(c = 0; c < maxBuf; c++){
+			sprintf(outDump, "%02X ", buffer[c]);
+			outDump += 3;
+		}
+
+		sprintf(outDump++, "\t");
+
+		for(c = 0; c < maxBuf; c++)
+			sprintf(outDump++, "%c", isprint(buffer[c]) ? buffer[c] : '.');
+
+		dataWalker += maxBuf;
+		lenData -= maxBuf;
+
+		sprintf(outDump++, "\n");
+	}
+	return(1);
+}
 
 int main(int argc, char *argv[])
 {
@@ -62,38 +95,4 @@ void usage(char *exec)
 {
 	fprintf(stderr, "%s file_to_dump offset\nSaida redirecionada para STDERRO.\n", exec);
 	return;
-}
-
-int dump(void *data, size_t lenData, char *outDump, size_t lenOutDump)
-{
-	unsigned int c = 0, maxBuf = 0, totalTabs = 0;
-	unsigned char buffer[16] = {0};
-	char *dataWalker = NULL;
-	size_t dataRest = 0;
-
-	dataWalker = (char *)data;
-
-	for(; lenData > (size_t)0;){
-
-		if(lenData > (size_t)16) maxBuf = 16;
-		else                     maxBuf = lenData;
-
-		memcpy(buffer, dataWalker, maxBuf);
-
-		for(c = 0; c < maxBuf; c++){
-			sprintf(outDump, "%02X ", buffer[c]);
-			outDump += 3;
-		}
-
-		sprintf(outDump++, "\t");
-
-		for(c = 0; c < maxBuf; c++)
-			sprintf(outDump++, "%c", isprint(buffer[c]) ? buffer[c] : '.');
-
-		dataWalker += maxBuf;
-		lenData -= maxBuf;
-
-		sprintf(outDump++, "\n");
-	}
-	return(1);
 }
