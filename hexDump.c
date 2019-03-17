@@ -7,6 +7,7 @@
  *
  * Public Domain
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -14,7 +15,11 @@
 #include <ctype.h>
 #include <errno.h>
 
-void usage(char * );
+void usage(char *exec)
+{
+	fprintf(stderr, "%s file_to_dump offset\nSaida redirecionada para STDERRO.\n", exec);
+	return;
+}
 
 int dump(void *data, size_t lenData, char *outDump, size_t lenOutDump)
 {
@@ -89,10 +94,4 @@ int main(int argc, char *argv[])
 	}
 
 	return(0);
-}
-
-void usage(char *exec)
-{
-	fprintf(stderr, "%s file_to_dump offset\nSaida redirecionada para STDERRO.\n", exec);
-	return;
 }
