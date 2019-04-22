@@ -5,7 +5,7 @@
  * Um simples e escroto dumper para arquivos. Pois foi mais rapido fazer esse programa
  * do que descobrir a sintax do xd/od para fazer a mesma coisa.
  *
- * Public Domain
+ * MIT License
  */
 
 #include <stdio.h>
