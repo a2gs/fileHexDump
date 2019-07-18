@@ -24,10 +24,9 @@ void usage(char *exec)
 
 int dump(void *data, size_t lenData, char *outDump, size_t lenOutDump)
 {
-	unsigned int c = 0, maxBuf = 0, totalTabs = 0;
+	unsigned int c = 0, maxBuf = 0;
 	unsigned char buffer[16] = {0};
 	char *dataWalker = NULL;
-	size_t dataRest = 0;
 
 	dataWalker = (char *)data;
 

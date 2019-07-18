@@ -15,4 +15,4 @@ hexDump:
 	$(CC) -o hexDump hexDump.c $(CFLAGS)
 
 clean:
-	-$(RM) inotify
+	-$(RM) hexDump
